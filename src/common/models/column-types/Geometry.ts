@@ -1,9 +1,0 @@
-import ColumnType from "./base/ColumnType"
-
-export default class Geometry extends ColumnType {
-    static label: string = 'Geometry'
-    static faker: string = '"{fake()->latitude()},{fake()->longitude()}"'
-    static identifier: string = 'geometry'
-    static inputType: string = 'textarea'
-    static defaultValueTypeIsString: boolean = true
-}
