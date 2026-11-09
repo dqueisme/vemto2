@@ -1,99 +1,43 @@
-# Welcome to Vemto ༄
+# Vemto (Rust Edition) ༄
 
-[Vemto](https://vemto.app) is a desktop application focused on generating [Laravel](https://laravel.com) code, with several important features such as: editing and synchronizing the data schema (tables and models), generating migrations, models, factories, seeders, CRUD, API, and much more. 
+Vemto is a fast, lightweight native desktop application written in **Rust** focused on generating **Laravel** code (migrations, models, factories, controllers/CRUD, and data schemas).
 
-It also features an intelligent Schema editor that automatically creates tables and columns for relationships and detects the correct type of table columns.
+By replacing Electron, Node.js, and embedded PHP runtimes with a native Rust implementation using **egui / eframe**, Vemto achieves instant startup, minimal memory consumption (~30-50 MB vs hundreds of MBs in Electron), and single-binary native performance while still generating 100% standard Laravel PHP code.
 
-[![Vemto showcase](https://vemto.app//images/hero.png)](https://www.youtube.com/watch?v=9Ajie_-zcNI)
+## Features
 
-[**▶️ WATCH - Vemto showcase video on Youtube**](https://www.youtube.com/watch?v=9Ajie_-zcNI)
+- **Native Rust Desktop UI (eframe/egui)**: No Electron, no browser engine bloat. Fast and responsive.
+- **Schema Editor**: Interactive editing of tables, columns, indexes, and Eloquent relationships.
+- **Laravel Migrations Generator**: Produces clean, idiomatic Laravel migrations (`create_..._table.php`).
+- **Eloquent Models Generator**: Generates Laravel Model classes with fillable fields, casts, traits, and relationship methods (`hasOne`, `hasMany`, `belongsTo`, `belongsToMany`).
+- **Factories Generator**: Generates database factories with appropriate `fake()` data mappings for each column type.
+- **Controllers & CRUD Generator**: Generates resource controllers with validation rules and CRUD actions.
+- **Instant Code Preview**: Live preview of generated PHP code before writing to disk.
+- **Export & File Generation**: Direct export to any directory in your Laravel project.
+- **Project Serialization**: Save and load projects in standard JSON format.
 
-I'm delighted to announce that Vemto is now a fully open-source project, published under the MIT license.
+## Building and Running
 
-A few months ago, I (Tiago Rodrigues, creator of Vemto), [wrote a blog post explaining](https://vemto.app/blog/the-future-of-vemto) in detail why Vemto would become open-source.
+Ensure you have Rust and Cargo installed (1.70+):
 
-At the time, I wasn't sure which license to use, but after talking to countless users and customers, I ended up opting for the MIT license.
-
-It took me a while to prepare this repository, for personal reasons, but I finally managed to increase the number of tests to over 400, covering at least the most critical parts of the application, and I will continue adding more tests overtime.
-
-I also managed to finish writing much of the [internal development documentation](/docs/index.md).
-
-I hope you enjoy it, and if you have any questions, please email me at contact@vemto.app.
-
-By [Tiago Rodrigues](https://x.com/Tiago_Ferat)
-
-# Contact
-
-- contact@vemto.app
-- [Discord Server](https://discord.gg/CWnbWtJ)
-- https://x.com/VemtoApp
-- https://vemto.app
-
-# How to install
-
-I recommend using yarn to compile Vemto. So, the first step is to install all the dependencies:
-
-```
-yarn install
+```bash
+cargo build --release
 ```
 
-After that, install PHP Box (used to compile the PHP components):
+Run Vemto:
 
-```
-composer global require humbug/box
-```
-
-Make sure to add Composer's /bin directory to your PATH so you can run Box globally (this is necessary to compile Vemto).
-
-After that, access each of the PHP tools in src/php/apps and run the command:
-
-```
-composer install
+```bash
+cargo run --release
 ```
 
-inside their directories.
+## Running Tests
 
-NOTE: It would be nice to automate this third step when running the development environment or when compiling the application in the future.
+Run all unit and integration tests:
 
-Finally, run Vemto in development mode with:
-
-```
-yarn dev:fast
+```bash
+cargo test
 ```
 
-## Developer Documentation
+## License
 
-[Click here](/docs/index.md) to view documentation on architecture, code style, and more.
-
-## How to contribute?
-
-Currently, you can contribute in several ways.
-
-- Writing tests for classes that don't yet have them.
-- Fixing bugs you find.
-- Resolving open issues.
-- Improving our [docs](https://github.com/VemtoOrg/vemto-docs)
-- Adding support for improvements like Filament 4, the new Laravel 12+ FrontEnd templates, etc.
-- If you have ideas for new features, please open a discussion here so we can discuss them.
-
-The idea is that Vemto's next steps will focus on things like:
-
-- Writing documentation on how to use Vemto. Currently, we only have v1 documentation on the website.
-- Fixing most of the bugs, making it work with the vast majority of Laravel projects.
-- Implementing plugin support, as was the case in v1.
-- Adding support for more AI features, like generating a schema from a text description, etc.
-- Focusing on what Vemto is best at: the Schema Editor.
-
-# License
-
-Vemto's source code is licensed under the MIT license. 
-
-# Do I still need a license key?
-
-No, Vemto has been discontinued as a commercial product and is now fully open source. Feel free to use and modify this code however you like.
-
-If you have any questions, please contact me on **contact@vemto.app**.
-
-# What does Vemto mean?
-
-The word Vemto comes from my native language (Portuguese), from the original Vento, which means wind. I named the software this way because of its main objective, which has always been speed in the development of Laravel applications.
+Vemto Rust source code is licensed under the [MIT license](LICENSE).
